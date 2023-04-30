@@ -13,6 +13,8 @@ def compare_models(X, y, scoring, estimators={}, **kwargs):
         print(f"  max = {cv_results.max():.2%}\n")
         results.append(cv_results)
     plt.boxplot(results, labels=estimators.keys())
+    plt.xticks(rotation=90)
+    plt.show()
     return results
         
         
