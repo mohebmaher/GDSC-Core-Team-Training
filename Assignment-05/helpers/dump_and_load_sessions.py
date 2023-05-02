@@ -7,8 +7,12 @@ def dump_session(name="session", file_path="./assets"):
     return filename
     
     
-def load_session(filename):
+def load_session(filename=None):
     import dill
-    dill.load_module(filename)
+    if filename is not None:
+	try:
+    	    dill.load_module(filename)
+	except Exception as e:
+	    print(e)
     
     
