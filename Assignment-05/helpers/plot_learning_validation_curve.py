@@ -22,6 +22,8 @@ def plot_learning_curve(train_sizes, train_scores, test_scores):
     plt.fill_between(train_sizes, test_mean - test_std, test_mean + test_std, color="#DDDDDD")
 
     # Create the plot:
+    plt.xlim(left=np.min(train_sizes), right=np.max(train_sizes))
+    plt.ylim(bottom=0, top=1.0)
     plt.title("Learning Curve")
     plt.xlabel("Training Set Size"), plt.ylabel("Score"),
     plt.legend(loc="best")
@@ -29,7 +31,7 @@ def plot_learning_curve(train_sizes, train_scores, test_scores):
     plt.show()
     
     
-def plot_validation_curve(train_scores, test_scores):
+def plot_validation_curve(param_range, train_scores, test_scores):
     
     """Plot the validation curve."""
     
@@ -53,6 +55,8 @@ def plot_validation_curve(train_scores, test_scores):
     plt.fill_between(param_range, test_mean - test_std, test_mean + test_std, color="gainsboro")
     
     # Create plot:
+    plt.xlim(left=np.min(param_range), right=np.max(param_range))
+    plt.ylim(bottom=0, top=1.0)
     plt.title("Validation Curve")
     plt.xlabel("Parameter range")
     plt.ylabel("Score")
