@@ -1,13 +1,14 @@
-def compare_models(X, y, scoring, estimators={}, **kwargs):
+def compare_models(X, y, scoring, n_splits=5, random_state=42, estimators={}, **kwargs):
     
     "Compare different estimators."
     
     import matplotlib.pyplot as plt
     from sklearn.model_selection import cross_val_score, KFold
     
+    
     estimators.update(kwargs)
     results = []
-    kf = KFold(n_splits=5, shuffle=True, random_state=42)
+    kf = KFold(n_splits=n_splits, shuffle=True, random_state=42)
     
     for name, estimator in estimators.items():
         cv_results = cross_val_score(estimator, X, y, cv=kf, scoring=scoring)
