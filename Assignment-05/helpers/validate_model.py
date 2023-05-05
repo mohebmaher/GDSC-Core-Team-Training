@@ -12,9 +12,9 @@ def compare_models(X, y, scoring, estimators={}, **kwargs):
     for name, estimator in estimators.items():
         cv_results = cross_val_score(estimator, X, y, cv=kf, scoring=scoring)
         print(f"For {name}, results are:")
-        print(f"  min = {cv_results.min():.2%}")
-        print(f"  mean = {cv_results.mean():.2%}")
-        print(f"  max = {cv_results.max():.2%}\n")
+        print(f"  min = {cv_results.min():.2f}")
+        print(f"  mean = {cv_results.mean():.2f}")
+        print(f"  max = {cv_results.max():.2f}\n")
         results.append(cv_results)
         
     plt.boxplot(results, labels=estimators.keys())
